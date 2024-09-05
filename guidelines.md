@@ -13,24 +13,23 @@ Format pengisian data ini disusun dengan mempertimbangkan kemudahan pembacaan ko
 
 Data dibagi menjadi tiga kategori: kelompok taksa, data taksa, dan media.
 
-### **Data Kelompok Taksa**
+### Data Kelompok Taksa
 
-Pengelompokan taksa tidak harus sesuai dengan kelompok kerja. Masing-masing kelompok kerja bisa membagi lagi datanya menjadi beberapa kelompok taksa (dibaca dataset). Setiap dataset memiliki metadata dan sistem penomoran sendiri. 
+Pengelompokan taksa tidak harus sesuai dengan kelompok kerja. Masing-masing kelompok kerja bisa membagi lagi datanya menjadi beberapa kelompok taksa (dibaca dataset). Setiap dataset memiliki metadata dan sistem penomoran sendiri.
 
 Maksimal total taksa per dataset perlu mempertimbangkan:
 
 1. Kemudahan pembacaan dan pengisian data oleh manusia.  
 2. Kapasitas distribusi. Semakin besar kelompok taksa semakin besar ukuran paket filenya. Data besar juga akan mempengaruhi waktu parsing oleh komputer.  
-3. Jumlah taksa per kelompok taksa di Indonesia. Misalnya, untuk limit maksimal 1000 taksa, mamalia bisa dalam satu kelompok taksa, burung perlu dipecah minimal jadi dua kelompok, dst.  
-   
+3. Jumlah taksa per kelompok taksa di Indonesia. Misalnya, untuk limit maksimal 1000 taksa, mamalia bisa dalam satu kelompok taksa, burung perlu dipecah minimal jadi dua kelompok, dst.
 
 Usulan maksimal 2000\. Isian bisa kurang, tetapi tidak boleh lebih.
 
-### **Data Taksa**
+### Data Taksa
 
 Data ini berupa Google Sheets yang berisi daftar taksa dan informasi taksonominya. Penomoran dan metadata mengacu data kelompok taksa (dijelaskan dibawah).
 
-### **Media**
+### Media
 
 Media tambahan yang bisa dipaketkan berbarengan dengan data taksa. Belum diprioritaskan untuk program tahap I. Media juga bisa menggunakan link eksternal selagi berada di domain publik. Lisensi medianya juga mengizinkan untuk digunakan oleh pihak ketiga.
 
@@ -38,7 +37,8 @@ Media tambahan yang bisa dipaketkan berbarengan dengan data taksa. Belum diprior
 
 Penomoran kelompok taksa akan menggunakan Universally Unique Identifier (UUID) versi 7 ([https://en.wikipedia.org/wiki/Universally\_unique\_identifier](https://en.wikipedia.org/wiki/Universally\_unique\_identifier)). UUID memastikan keunikan identifikasi data dan memastikan data kita kompatibel dengan prinsip FAIR ([https://www.go-fair.org/fair-principles/](https://www.go-fair.org/fair-principles/)). UUID ini akan dicantumkan di file metadata. File metadata akan dihasilkan otomatis oleh program parsing yg sedang kita kembangkan.
 
-**Usulan Penomoran Taksa**  
+### Usulan Penomoran Taksa
+
 Untuk penomoran taksa, kita menggunakan sistem penomoran yang disepakati bersama. Nomornya berupa angka yang dapat digunakan untuk identifikasi.
 
 Format penomoran:  
@@ -48,8 +48,8 @@ Format penomoran:
 * Dua Digit berikutnya nomor kelompok kerja  
 * Tiga digit berikutnya nomor dataset. Dimulai dengan no 001 per masing-masing dataset. Ditentukan penomorannya oleh kelompok kerja.  
 * 4 digit berikutnya urutan species. Dimulai dengan 0001 per masing-masing famili  
-    
-  **Nomor Grup Kelompok Kerja**
+
+#### Nomor Grup Kelompok Kerja
 
 | No identifikasi | Grup             |
 | :-------------- | :--------------- |
@@ -59,9 +59,7 @@ Format penomoran:
 | 4               | Vertebrata       |
 | 5               | Animalia lainnya |
 
-
-  **Nomor identifikasi kelompok kerja**
-
+#### Nomor identifikasi kelompok kerja
 
 | No Identifikasi         | Kelompok Kerja        | idKK |
 | :---------------------- | :-------------------- | :--- |
@@ -102,31 +100,29 @@ Format penomoran:
 
 ## Pengisian Data Taksonomi
 
-### **Pemakaian Bahasa**
+### Pemakaian Bahasa
 
 * Nama famili, genus, dan spesies memakai nama latin sesuai standar taksonomi yang disetujui KK Kelompok Taksa dan diberitahukan ke Komite Inti.  
-* Nama umum (common names) utama dalam Bahasa Inggris dan Bahasa Indonesia sesuai kesepakatan KK kelompok taksa jika belum ada standardisasi.    
-* Bahasa Inggris menggunakan menggunakan Bahasa Inggris Amerika Serikat. Alasannya, untuk konsistensi dengan Bahasa Inggris komputer dan bahasa pemrograman. Bahasa Inggris Amerika Serikat juga merupakan Bahasa Inggris yang paling banyak dipakai di Indonesia. 
+* Nama umum (common names) utama dalam Bahasa Inggris dan Bahasa Indonesia sesuai kesepakatan KK kelompok taksa jika belum ada standardisasi.
+* Bahasa Inggris menggunakan menggunakan Bahasa Inggris Amerika Serikat. Alasannya, untuk konsistensi dengan Bahasa Inggris komputer dan bahasa pemrograman. Bahasa Inggris Amerika Serikat juga merupakan Bahasa Inggris yang paling banyak dipakai di Indonesia.
 
-### **Format pengisian data**
+### Format pengisian data
 
-* Nama file dan folder menggunakan snake\_case. Format awal cukup dengan format Google Sheets. Saat dirilis, dieksport menjadi CSV. Contoh penamaan file: mamalia\_indonesia.csv. Jika ada pembagian dataset, penamaan file menjadi \<kolompok-data\>\_\<KK\>\_indonesia.csv.   
+* Nama file dan folder menggunakan snake\_case. Format awal cukup dengan format Google Sheets. Saat dirilis, dieksport menjadi CSV. Contoh penamaan file: mamalia\_indonesia.csv. Jika ada pembagian dataset, penamaan file menjadi \<kolompok-data\>\_\<KK\>\_indonesia.csv.
 * Nama kolom menggunakan lowercase untuk yang satu kata dan camelCase untuk yang lebih dari satu kata. Contohnya: id dan taxonRank  
 * Untuk kolom yang isiannya dalam berbagai bahasa. Kolom dipisah dengan masing-masingnya diberi suffix underscore dan kode bahasa sesuai **ISO 639-1** ([https://www.loc.gov/standards/iso639-2/php/code\_list.php](https://www.loc.gov/standards/iso639-2/php/code\_list.php)). Contohnya untuk nama umum dalam bahasa Inggris mainCommonName\_EN dan versi bahasa Indonesia nya mainCommonName\_ID.  
-* Sebagian bahasa, seperti Bahasa Inggris, memiliki berbagai versi negara penutur bahasa tersebut. Kolom yang berisi data dengan bahasa spesifik negara tertentu, penamaan kolom menggunakan kode bahasa dan negara: mainCommonName\_EN-US.   
+* Sebagian bahasa, seperti Bahasa Inggris, memiliki berbagai versi negara penutur bahasa tersebut. Kolom yang berisi data dengan bahasa spesifik negara tertentu, penamaan kolom menggunakan kode bahasa dan negara: mainCommonName\_EN-US.
 * Daftar (*list*) dipisah menggunakan titik koma  “;” mengacu GBIF. Contohnya: Indonesia;Malaysia;Brunei.  
 * Jika didalam daftarnya terdapat subdaftar (*sublist*). Subdaftar dipisah menggunakan tanda pipe berspasi “ | ”. Contohnya: stateProvince:Sumatra Barat | Jambi | Riau;city:Padang | Pekanbaru | Bukittinggi  
 * Gunakan tanda pagar untuk pemisah identifikasi kata dalam subdaftar. Contohnya pada isian symbions: hasParasite:biodivina\#100011 | biodivina\#100012;eatenBy:biodivina\#10001 | biodivina\#10001.
 
-### **Kolom dan terminologi data taksonomi**
+### Kolom dan terminologi data taksonomi
 
-**Catatan:** 
-
-* Kolom dengan label berwarna kuning bisa diisi jika memungkinkan, tetapi belum menjadi prioritas untuk program Biodiv-INA Tahap I.   
-* Tipe data SQL sesuai format database SQLite untuk aplikasi selain website. Untuk website, akan menyesuaikan dengan format Postgres jika dibutuhkan.   
-* Contoh penggunaan secara umum. Diharapkan masing-masing KK kelompok taksa memiliki contoh penggunaan untuk kelompok taksa yang menjadi tanggung jawab KK tersebut.  
-* Tipe data akan dilengkapi dengan bahasa pemrograman lain untuk memudahkan penulisan aplikasi pendamping.
-
+>Catatan:
+> * Kolom dengan label berwarna kuning bisa diisi jika memungkinkan, tetapi belum menjadi prioritas untuk program Biodiv-INA Tahap I.
+> * Tipe data SQL sesuai format database SQLite untuk aplikasi selain website. Untuk website, akan menyesuaikan dengan format Postgres jika dibutuhkan.
+> * Contoh penggunaan secara umum. Diharapkan masing-masing KK kelompok taksa memiliki contoh penggunaan untuk kelompok taksa yang menjadi tanggung jawab KK tersebut.  
+> * Tipe data akan dilengkapi dengan bahasa pemrograman lain untuk memudahkan penulisan aplikasi pendamping.
 
 | Nama Kolom                      | Deskripsi                                                                                                                                                                                                                                                                  | Format pengisian                                                                                                      | Contoh penggunaan                                                                                                                | Terminologi Darwin Core                    | Tipe data Rust                      | Tipe data SQL |
 | :------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------- | :---------------------------------- | :------------ |
@@ -192,7 +188,7 @@ Format penomoran:
 | symbiontNotes\_ID               | Catatan interaksi dalam Bahasa Indonesia. Diisi sesuai symbionNotes\_EN-US.                                                                                                                                                                                                | \<catatan interaksi\>                                                                                                 | Interaksi parasit pertama kali dideskripsikan oleh Winterhoff et al. \[2\]                                                       |                                            |                                     |               |
 | referenceLinks                  | Referensi taksa. List berdasarkan urutan penggunaan. Penulisan nomor urutan dan link referensi. Utamakan berupa DOI. Jika tidak ada, gunakan tautan asli.                                                                                                                  | \<\[urutan\]\>\<spasi\>\<link\>                                                                                       | \[1\] [https://doi.org/10.1645/19-136](https://doi.org/10.1645/19-136) \[2\]                                                     |                                            | String                              | TEXT          |
 | externalTaxonIdentifiers        | Nomor identitas data taksonomi eksternal. Hanya untuk database yang dikenali. Lihat dibawah untuk opsinya. Diluar opsi ini gunakan externalLinks.                                                                                                                          | \<provider-1\>\<titik dua\>\<identifier-1\>\<titik koma\>\<provider-2\>\<titik dua\>\<identifier-2\>                  | mdd:1003513; ncbi:txid2606483                                                                                                    |                                            | Vector\<String\>                    | TEXT          |
-| externalLinks                   | Tautan lainnya yang tidak termasuk identitas taksonomi maupun referensi. Disediakan untuk link yang tidak memiliki takson identifier dan tautan permanen.                                                                                                                  | \<link-1\>\<titik koma\>\<link-2\>                                                                                    | https://www.iucnredlist.org/species/3329/22451992;                                                                               |                                            | Vector\<String\>                    | TEXT          |
+| externalLinks                   | Tautan lainnya yang tidak termasuk identitas taksonomi maupun referensi. Disediakan untuk link yang tidak memiliki takson identifier dan tautan permanen.                                                                                                                  | \<link-1\>\<titik koma\>\<link-2\>                                                                                    | <https://www.iucnredlist.org/species/3329/22451992>;                                                                             |                                            | Vector\<String\>                    | TEXT          |
 | associatedData                  | Tipe data dan nomor identifikasi menggunakan sumber sendiri. File-nya satu paket dengan data taksa. Opsi: video, audio, photo, illustration, geoJSON. Kosongkan jika tidak ada.                                                                                            | \<tipe-data\>\<titik dua\>\<nomor-identifikasi\>                                                                      |                                                                                                                                  |                                            | String                              | TEXT          |
 | externalAssociatedDataLinks     | Data dari sumber eksternal. Pastikan kesepakatan copyright sebelum menggunakan. Opsi seperti associatedData                                                                                                                                                                | \<tipe-data-1\>\<titik dua\>\<copyright-1\>                                                                           | \<links-1\>;\<tipe-data-1\>\<titik dua\>\<copyright-2\>                                                                          | \<links-2\>                                | photo:                              |               | String           | TEXT   |
 | contributorNameOrcid            | Daftar nama kontributor dan ORCID-nya.                                                                                                                                                                                                                                     | \<nama-kontributor-1\>\<titik dua\>\<ORCID-1\>\<titik koma\>\<nama-kontributor-2\>\<titik dua\>\<ORCID-2\>            | Heru Handika:0000-0002-2834-7175                                                                                                 |                                            | String                              | TEXT          |
@@ -227,35 +223,35 @@ Silahkan ditambahkan untuk ekoregion biota laut.
 
 Silahkan tambahkan kata kunci database lain yang punya tautan permanen.
 
-| Kata kunci | Keterangan                                                                                                                                        | Link                                                             |
-| :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------- |
-| mdd        | Mammal Diversity Database. Salah satu database mamalia yang banyak dipakai.                                                                       | https://www.mammaldiversity.org/                                 |
-| ncbi       | National Center for Biotechnology Information. Database sekuen genetik paling umum dipakai.                                                       | https://www.ncbi.nlm.nih.gov/                                    |
-| aw         | Amphibia Web. Salah satu database amfibi yang banyak dipakai                                                                                      | https://amphibiaweb.org/                                         |
-| asw        | Amphibian Species of the World. Salah satu database amfibi yang banyak dipakai                                                                    | https://amphibiansoftheworld.amnh.org/                           |
-| rd         | Reptile Database: database taksonomi reptil (Reptilia)                                                                                            | https://reptile-database.reptarium.cz/                           |
-| wsc        | World Spider Catalog: database taksonomi laba-laba (Araneae)                                                                                      | https://wsc.nmbe.ch/                                             |
-| wac        | World Arachnid Catalog: database taksonomi untuk ordo arakhnida selain Araneae, Scorpiones, Opiliones, Acariformes, Parasitiformes, dan Xiphosura | https://wac.nmbe.ch/                                             |
-| wco        | World Catalogue of Opiliones: database taksonomi laba-laba penuai (Opiliones)                                                                     | https://www.wcolite.com/                                         |
-| powo       | Plants of the World Online: database taksonomi tumbuhan vaskuler (Tracheophyta)                                                                   | https://powo.science.kew.org/                                    |
-| wf         | World Ferns/Checklist of Ferns and Lycophytes of the World: database taksonomi tumbuhan pakis (Polypodiopsida)                                    | https://www.worldplants.de/world-ferns/ferns-and-lycophytes-list |
-| cb         | Chilobase: database taksonomi lipan (Chilopoda)                                                                                                   | https://chilobase.biologia.unipd.it/                             |
-| mb         | Millibase: database taksonomi kaki seribu (Diplopoda)                                                                                             | https://millibase.org/                                           |
-| worms      | World Register of Marine Species: database taksonomi hewan laut                                                                                   | https://www.marinespecies.org/                                   |
-| psf        | Phasmida Species File: database taksonomi serangga tongkat (Phasmida)                                                                             | https://phasmida.speciesfile.org/                                |
-| msf        | Mantodea Species File: database taksonomi belalang sembah (Mantodea)                                                                              | http://mantodea.speciesfile.org                                  |
-| osf        | Orthoptera Species File: database taksonomi Orthoptera                                                                                            | https://orthoptera.speciesfile.org/                              |
-| fb         | FishBase: database taksonomi dan ekologi ikan (Pisces)                                                                                            | https://www.fishbase.us/                                         |
-| birdlf     | HBW / BirdLife Taxonomic Checklist: database taksonomi burung                                                                                     | https://avibase.bsc-eoc.org/checklist.jsp?lang=EN                |
-| ioc        | The IOC World Bird List: database taksonomi burung                                                                                                | https://www.worldbirdnames.org/new/                              |
+| Kata kunci | Keterangan                                                                                                                                        | Link                                                               |
+| :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------- |
+| mdd        | Mammal Diversity Database. Salah satu database mamalia yang banyak dipakai.                                                                       | <https://www.mammaldiversity.org/>                                 |
+| ncbi       | National Center for Biotechnology Information. Database sekuen genetik paling umum dipakai.                                                       | <https://www.ncbi.nlm.nih.gov/>                                    |
+| aw         | Amphibia Web. Salah satu database amfibi yang banyak dipakai                                                                                      | <https://amphibiaweb.org/>                                         |
+| asw        | Amphibian Species of the World. Salah satu database amfibi yang banyak dipakai                                                                    | <https://amphibiansoftheworld.amnh.org/>                           |
+| rd         | Reptile Database: database taksonomi reptil (Reptilia)                                                                                            | <https://reptile-database.reptarium.cz/>                           |
+| wsc        | World Spider Catalog: database taksonomi laba-laba (Araneae)                                                                                      | <https://wsc.nmbe.ch/>                                             |
+| wac        | World Arachnid Catalog: database taksonomi untuk ordo arakhnida selain Araneae, Scorpiones, Opiliones, Acariformes, Parasitiformes, dan Xiphosura | <https://wac.nmbe.ch/>                                             |
+| wco        | World Catalogue of Opiliones: database taksonomi laba-laba penuai (Opiliones)                                                                     | <https://www.wcolite.com/>                                         |
+| powo       | Plants of the World Online: database taksonomi tumbuhan vaskuler (Tracheophyta)                                                                   | <https://powo.science.kew.org/>                                    |
+| wf         | World Ferns/Checklist of Ferns and Lycophytes of the World: database taksonomi tumbuhan pakis (Polypodiopsida)                                    | <https://www.worldplants.de/world-ferns/ferns-and-lycophytes-list> |
+| cb         | Chilobase: database taksonomi lipan (Chilopoda)                                                                                                   | <https://chilobase.biologia.unipd.it/>                             |
+| mb         | Millibase: database taksonomi kaki seribu (Diplopoda)                                                                                             | <https://millibase.org/>                                           |
+| worms      | World Register of Marine Species: database taksonomi hewan laut                                                                                   | <https://www.marinespecies.org/>                                   |
+| psf        | Phasmida Species File: database taksonomi serangga tongkat (Phasmida)                                                                             | <https://phasmida.speciesfile.org/>                                |
+| msf        | Mantodea Species File: database taksonomi belalang sembah (Mantodea)                                                                              | <http://mantodea.speciesfile.org>                                  |
+| osf        | Orthoptera Species File: database taksonomi Orthoptera                                                                                            | <https://orthoptera.speciesfile.org/>                              |
+| fb         | FishBase: database taksonomi dan ekologi ikan (Pisces)                                                                                            | <https://www.fishbase.us/>                                         |
+| birdlf     | HBW / BirdLife Taxonomic Checklist: database taksonomi burung                                                                                     | <https://avibase.bsc-eoc.org/checklist.jsp?lang=EN>                |
+| ioc        | The IOC World Bird List: database taksonomi burung                                                                                                | <https://www.worldbirdnames.org/new/>                              |
 
 ## Mobilisasi data
 
-### **Pengisian data**
+### Pengisian data
 
-Data diisi ke Google Spreadsheet yang di-host ISES. Selanjutnya, data yang sudah ready di taruh di GitHub. Detail nya akan dijelaskan di skema mobilisasi data. 
+Data diisi ke Google Spreadsheet yang di-host ISES. Selanjutnya, data yang sudah ready di taruh di GitHub. Detail nya akan dijelaskan di skema mobilisasi data.
 
-### **Pemaketan Data**
+### Pemaketan Data
 
 #### Konten Paket
 
@@ -265,15 +261,15 @@ Metadata YAML
 Foto: WEBP (Konversi menggunakan parser)  
 GitHub Release format: TAR.GZ (TBD. Butuh uji rasio kompresi terbaik)
 
-### **Skema Mobilisasi Data**
+### Skema Mobilisasi Data
 
-Data di Google Spreadsheet dikelola masing-masing KK Kurasi Data. Kemudian data yang sudah siap untuk dirilis ditaruh di GitHub repository Biodiv-INA. Masing kelompok taksa akan memiliki repository tersendiri. Data GitHub dikelola KK Kurasi Data bekerja sama dengan KK Teknologi Informasi dan Komite Inti. Data dirilis secara berkala dengan skema penomoran Semantic Versioning Versi 2 (SemVer V2, https://semver.org/). Skema ini memungkinkan perubahan data kita terstruktur, dapat diprediksi, dan bisa ditelusuri. Skema ini jamak digunakan dalam pengembangan perangkat lunak.
+Data di Google Spreadsheet dikelola masing-masing KK Kurasi Data. Kemudian data yang sudah siap untuk dirilis ditaruh di GitHub repository Biodiv-INA. Masing kelompok taksa akan memiliki repository tersendiri. Data GitHub dikelola KK Kurasi Data bekerja sama dengan KK Teknologi Informasi dan Komite Inti. Data dirilis secara berkala dengan skema penomoran Semantic Versioning Versi 2 (SemVer V2, <https://semver.org/>). Skema ini memungkinkan perubahan data kita terstruktur, dapat diprediksi, dan bisa ditelusuri. Skema ini jamak digunakan dalam pengembangan perangkat lunak.
 
 Secara umum format SemVer v2: \<major\>.\<minor\>.\<patch\>. Untuk rilis pertama merupakan versi 1.0.0. Nomor major ditingkatkan jika terjadi perubahan signifikan di datanya. Misalnya, data yang sekarang berisi data taksonomi murni, ditingkatkan dengan data karakter untuk menjadi panduan lapangan. Versinya akan menjadi 2.0.0. Untuk revisi spesies, maka penomoran yang ditingkatkan nomor minor. Misalnya dari v1.0.0 menjadi v1.1.0. Nomor patch ditingkatkan untuk revisi kecil, misalnya perbaikan typo, kesalahan isian data, dsb. Nomor v1.0.0 akan menjadi v1.0.1
 
 Setiap rilis data, Git repository-nya akan ditandai dengan tag, contohnya git tag v1.0.0. Kita akan kembangkan GitHub Action script yang akan otomatis memaketkan datanya dan dirilis ke halaman rilis GitHub. Kita juga akan menyiapkan repository khusus yang berisi metadata semua data taksa. Aplikasi akan mengindeks repository ini untuk mengetahui data apa saja yang tersedia. Informasi ketersediaan update data akan diketahui dari perubahan versi di halaman rilis GitHub.
 
-## Geographic Information System (GIS) 
+## Geographic Information System (GIS)
 
 Target awal kita bisa menyiapkan poligon ekoregion dalam format GeoJSON.
 
@@ -290,4 +286,3 @@ Rust crates: [https://georust.org/](https://georust.org/)
 [Occurrence download formats :: Technical Documentation (gbif.org)](https://techdocs.gbif.org/en/data-use/download-formats)  
 [New Zealand Organisms Register (nzor.org.nz)](https://www.nzor.org.nz/)  
 [https://www.globalbioticinteractions.org/](https://www.globalbioticinteractions.org/)
-
