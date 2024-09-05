@@ -1,5 +1,5 @@
-# Release Notes / Catatan Rilis
+# Release Notes / Catatan Perilisanz
 
-## v0.1.0 (1 September 2024)
+## v0.1.0 (4 September 2024)
 
-- Rilis perdana panduan
+- Rilis awal
