@@ -119,6 +119,7 @@ Format penomoran:
 ### Kolom dan terminologi data taksonomi
 
 >Catatan:
+>
 > * Kolom dengan label berwarna kuning bisa diisi jika memungkinkan, tetapi belum menjadi prioritas untuk program Biodiv-INA Tahap I.
 > * Tipe data SQL sesuai format database SQLite untuk aplikasi selain website. Untuk website, akan menyesuaikan dengan format Postgres jika dibutuhkan.
 > * Contoh penggunaan secara umum. Diharapkan masing-masing KK kelompok taksa memiliki contoh penggunaan untuk kelompok taksa yang menjadi tanggung jawab KK tersebut.  
