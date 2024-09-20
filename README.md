@@ -1,3 +1,3 @@
 # Panduan Data Biodivina
 
-[Panduan](guidelines.md)
+[Panduan Bahasa Indonesia](guidelines_ID.md)
