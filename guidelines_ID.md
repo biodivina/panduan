@@ -455,9 +455,9 @@ Sulawesi mengacu pada nomenklatur di Figure 1\. Handika et al. 2021\. Pengidenti
 6. Southeast Sulawesi  
 7. Southwest Sulawasi
 
-### *Figure 1 Handika, et al. (2001)*
+### *Figure 1 Handika, et al. (2021)*
 
-![Figure 1 Handika, et al. (2001)](images/figure2.png)
+![Figure 1 Handika, et al. (2021)](images/figure2.png)
 
 ### **Country**
 
