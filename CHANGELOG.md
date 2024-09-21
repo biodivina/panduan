@@ -1,4 +1,4 @@
-# Release Notes / Catatan Perilisanz
+# Release Notes / Catatan Perilisan
 
 ## v0.2.0 (17 September 2024)
 
